@@ -8,8 +8,10 @@ function Login({ setAuthorization, isAuthorised }) {
 
   return (
     <div>
-      <p>{isAuthorised ? "logout" : "login"}</p>
-      <button onClick={handleClick}>{isAuthorised ? "logout" : "login"}</button>
+      <p>{isAuthorised ? "Log Out" : "Log In"}</p>
+      <button onClick={handleClick}>
+        {isAuthorised ? "Log Out" : "Log In"}
+      </button>
     </div>
   );
 }

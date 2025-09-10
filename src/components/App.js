@@ -14,7 +14,7 @@ const App = () => {
       <BrowserRouter>
         <p>
           {isAuthorised
-            ? "Logged in, Now you can enter the Playground"
+            ? "Logged in, Now you can enter Playground"
             : "You are not authenticated, Please login first"}
         </p>
         <Navigation />

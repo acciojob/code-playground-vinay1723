@@ -1,9 +1,8 @@
-// Login.js
 import React from "react";
 
 function Login({ setAuthorization, isAuthorised }) {
   const handleClick = () => {
-    setAuthorization((val) => !val);
+    setAuthorization(!isAuthorised); // ✅ directly toggle
   };
 
   return (

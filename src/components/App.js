@@ -10,7 +10,7 @@ const App = () => {
   const [isAuthorised, setIsAuthorised] = useState(false);
 
   return (
-    <div>
+    <div className="main-container">
       <BrowserRouter>
         <p>
           {isAuthorised

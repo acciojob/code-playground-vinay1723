@@ -2,13 +2,13 @@ import React from "react";
 
 function Login({ setAuthorization, isAuthorised }) {
   const handleClick = () => {
-    setAuthorization(!isAuthorised); // ✅ directly toggle
+    setAuthorization(!isAuthorised);
   };
 
   return (
     <div>
       <p>{isAuthorised ? "Log Out" : "Log In"}</p>
-      <button onClick={handleClick}>
+      <button data-testid="auth-btn" onClick={handleClick}>
         {isAuthorised ? "Log Out" : "Log In"}
       </button>
     </div>

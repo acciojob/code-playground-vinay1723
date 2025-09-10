@@ -19,23 +19,16 @@ const App = () => {
         </p>
         <Navigation />
         <Switch>
-          {/* Private route */}
-          <PrivateRoute path="/playground" isAuthorised={isAuthorised} />
-
-          {/* Public route (Login) */}
-          <Route
-            exact
-            path="/login"
-            render={() => (
-              <Login
-                setAuthorization={setIsAuthorised}
-                isAuthorised={isAuthorised}
-              />
-            )}
-          />
-
-          {/* Fallback redirect */}
-          <Redirect to="/login" />
+          <Route path="/login">
+            <Login
+              setAuthorization={setIsAuthorised}
+              isAuthorised={isAuthorised}
+            />
+          </Route>
+          <Route path="/playground">
+            {isAuthorised ? <PlayGround /> : <Redirect to="/login" />}
+          </Route>
+          <Redirect from="/" to="/login" />
         </Switch>
       </BrowserRouter>
     </div>

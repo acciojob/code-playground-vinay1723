@@ -1,13 +1,45 @@
-
-import React from "react";
-import './../styles/App.css';
+import React, { useState } from "react";
+import "./../styles/App.css";
+import Login from "./Login";
+import PlayGround from "./PlayGround";
+import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+import Navigation from "./Navigation";
+import PrivateRoute from "./PrivateRoute";
 
 const App = () => {
+  const [isAuthorised, setIsAuthorised] = useState(false);
+
   return (
     <div>
-        {/* Do not remove the main div */}
-    </div>
-  )
-}
+      <BrowserRouter>
+        <p>
+          {isAuthorised
+            ? "Logged in, Now you can enter the Playground"
+            : "You are not authenticated, Please login first"}
+        </p>
+        <Navigation />
+        <Switch>
+          {/* Private route */}
+          <PrivateRoute path="/playground" isAuthorised={isAuthorised} />
 
-export default App
+          {/* Public route (Login) */}
+          <Route
+            exact
+            path="/login"
+            render={() => (
+              <Login
+                setAuthorization={setIsAuthorised}
+                isAuthorised={isAuthorised}
+              />
+            )}
+          />
+
+          {/* Fallback redirect */}
+          <Redirect to="/login" />
+        </Switch>
+      </BrowserRouter>
+    </div>
+  );
+};
+
+export default App;
